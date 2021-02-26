@@ -32,7 +32,19 @@ class Cart():
         # print(self)
         return self.bill
     
-    def view_bill(self):
+    def view_cart(self):
+        '''
+        view_cart which will show the items inside the cart
+        '''
+        if self.count > 0:
+            print("=====================My Cart========================")
+            for i in range(self.count):
+                print(f"{int(i+1)}. {self.items[i]}           \t${round(float(self.amount[i]),2)}".title())
+        else:
+            print("Your cart is empty\n")
+
+    
+    def view_bill(self, discount):
         '''
         A total bill can be viewed, total bill, tax etc and
         for decision making such as add/remove from the cart
@@ -42,9 +54,12 @@ class Cart():
             for i in range(self.count):
                 print(f"{int(i+1)}. {self.items[i]}           \t${round(float(self.amount[i]),2)}\n".title())
             print("=====================Total==========================")
-            print(f"Total Bill Before Tax:\t\t\t${round(float(self.bill),2)}\n")
+            print(f"Total Bill Before Tax:\t\t\t${round(float(self.bill),2)}")
             print(f"Total Tax            :\t\t\t${round(float(self.bill * 0.12),2)}\n")
             print(f"Total Bill           :\t\t\t${round(float(self.bill * 1.12),2)}\n")
+            if discount:
+                print(f"Total Discount       :\t\t\t${round((float(self.bill * 1.12) - float(self.bill * 1.02)),2)}")
+                print(f"Bill After Discount  :\t\t\t${round(float(self.bill * 1.02),2)}\n")
         else:
             print("Your cart is empty\n")
 
@@ -66,20 +81,34 @@ class Cart():
             else:
                 raise ValueError
         except ValueError:
-            print("Invalid Option")
-        except BaseException() as e:
-            print(e)
+            print("Invalid Option, Cannot Remove Items from the empty cart")
+        except BaseException():
+            print("Invalid Option!")
 
+
+class Payment(Cart):
+    def __init__(self):
+        self.coupons = {'JAN': 0.9, 'FEB': 0.88, 'MAR': 0.9}
     
-    def __str__(self):
-        return super().__str__()
-
+    def makePayment(self,food):
+        print("Processing Your Payment!")
+        '''
+        Method provides discount facility, which is prebuilt
+        '''
+        discount = input("\nDo you have an discount coupon, Yes or No:\n")
+        if discount.upper() == 'YES':
+            print(f"Your bill with discount before tax is ${round(food.bill * self.coupons['MAR'], 2)}\n") 
+            food.view_bill(True)
+        else:
+            print(f"Your current bill is ${round(food.bill * 1.12, 2)}\n")
+            food.view_bill(False)
+        print("payment is successful!\n")
 
 class Food(Cart):
 
     def __init__(self):
         super().__init__()
-        self.size = { 'regular': 3.99, 'medium': 4.99, 'large': 6.99 }
+        self.size = { 'regular': 3.99, 'medium': 4.99, 'large': 7.99 }
         self.pizza = { 'mushroom': 3.99, 'chicken': 4.99, 'spinach': 3.49, 'delux':5.99, 'veggie':3.99 }
         self.bread = { 'bacon':2.49, 'cheese':3.99, 'spinach':3, 'parmesan':3.49 }
         self.drink = { 'pepsi':2.99, 'coke':2.49, 'lemonade':3.39 }
@@ -104,8 +133,8 @@ class Food(Cart):
                 self.add_item(self.size_list[size - 1] + ' ' + self.pizza_list[pizza_type - 1] + ' pizza', float(self.size[self.size_list[size - 1]] + self.pizza[self.pizza_list[pizza_type  - 1]]))
                 self.count += 1
                 print("\n1 Pizza Added to the cart successfully\n")
-        except ValueError as e:
-            print(e)
+        except ValueError:
+            print("Invalid Option!")
         
 
     def makeBread(self):
@@ -121,8 +150,8 @@ class Food(Cart):
                 self.add_item(self.size_list[size - 1] + ' ' + self.bread_list[bread_type - 1] + ' bread', float(self.size[self.size_list[size - 1]] + self.bread[self.bread_list[bread_type  - 1]]))
                 self.count += 1
                 print("\n1 Bread Added to the cart successfully\n")
-        except ValueError as e:
-            print(e)
+        except ValueError:
+            print("Invalid Option")
     
     def addSoda(self):
         '''
@@ -141,38 +170,30 @@ class Food(Cart):
             print(e)
 
     def __str__(self):
-        # return super().__str__()
-        sb = ""
-        for i in self.pizza.keys():
-            print(i)
-
-class Payment(Cart):
-    def __init__(self):
-        self.coupons = {'JAN': 0.2, 'FEB': 0.25}
-        self.tax = 0.49
-    
-    def makePayment(self,food):
-        print("Processing Your Payment")
         '''
-        Check if the discount applicable
+        To Print The Menu
         '''
-        discount = input("\nDo you have an discount coupon, Yes or No:\n")
-        if discount == 'Yes':
-            print(f"Your bill with discount is ${round(food.bill * 0.9, 2)}")
-            print(f"Your total bill is ${round(food.bill * 1.02, 2)}")
-        else:
-            print(f"Your current bill is ${round(food.bill * 1.12, 2)}")
-        print("payment is successful!")
+        sb = "Our Today's Menu is\n"
+        sb += "\tPizza\n"
+        for (key, item) in enumerate(self.pizza.keys()):
+            sb += str(key+1) + "\t" + item.title() + " Pizza \n"
+        sb += "\tBreads\n"
+        for(key, item) in enumerate(self.bread.keys()):
+            sb += str(key+1) + "\t" + item.title() + " Bread \n"
+        sb += "\tDrinks\n"
+        for(key, item) in enumerate(self.drink.keys()):
+            sb += str(key+1) + "\t" + item.title() + " \n"
+        return sb
 
 def main():
     '''
     This method is an entry to Domino's Pizza Service
     '''
     try:
-        print("Welcome to Domino's Pizza!'\nWhat are you having today?\n")
-        options = input("\t1.Pizza\n\t2.Breads\n\t3.Soda\n\t4.View Cart\n\t5.Remove Item\n\t6.Pay Bill\n\t7.Quit\n")
+        print("Welcome to Domino's Pizza!\nWhat are you having today?\n")
+        options = input("\t1.Pizza\n\t2.Breads\n\t3.Soda\n\t4.View Cart\n\t5.Remove Item\n\t6.View Menu\n\t7.Pay Bill\n\t8.Quit\n")
         food = Food()
-        while options != '7':
+        while options != '8':
             if options == '1':
                 #get your pizza ready
                 food.makePizza()
@@ -184,30 +205,36 @@ def main():
                 food.addSoda()
             elif options == '4':
                 #View Cart
-                food.view_bill()
+                food.view_cart()
             elif options == '5':
                 #Remove An Item
                 food.remove_item()
             elif options == '6':
-                #Exit
+                # view menu
+                print(food)
+            elif options == '7' and food.count < 1:
+                #empty cart before billing case
+                print("Cannot Process Payment!Your Cart is Empty\nAdd Delicious Pizza/Bread/Drink to your cart before you proceed")
+            elif options == '7' and food.count > 0:
+                #break
                 break
             else:
-                print("Please try with digit 1 - 5")
-            options = input("\nDo you want to add/remove anything else\n\t1.Pizza\n\t2.Breads\n\t3.Soda\n\t4.View Cart\n\t5.Remove Item\n\t6.Pay Bill\n\t7.Quit\n")
+                print("Invalid Option, Please try with digit 1 - 8")
+            options = input("\nDo you want to add/remove items\n\t1.Pizza\n\t2.Breads\n\t3.Soda\n\t4.View Cart\n\t5.Remove Item\n\t6.View Menu\n\t7.Pay Bill\n\t8.Quit\n")
             
-        if options == '7' and food.count < 1:
+        if options == '8':
             return print("\nThank you for stopping by!")
-        else:
-            print("Payment Processing")
+        elif options == '7':
             pay = Payment()
             pay.makePayment(food)
-            print("\n Here's your invoice")
-            food.view_bill()
-            print("\nYour pizza will be delivered shortly, Thank you for stopping by\n")
+            print("\nYour pizza will be delivered shortly, Thank you for stopping by!\n")
     # except ValueError:
     except ValueError:
         print("Invalid Option")
     
 
 if __name__ == '__main__':
+    '''
+    Starting Point of execution, by calling the main method
+    '''
     main()
