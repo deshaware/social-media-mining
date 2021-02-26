@@ -4,10 +4,9 @@
 #Domino's Pizza Counter
 #Start with welcome, option to choose categories
 #Categories - Pizza,Sides(Bread), Soda
-#Payment - Billing and tip
-#Discount - Enter today's day in CAPs to get 15%
+#Payment - Billing and tax
+#Discount - Depends on the month, default selected march for simplicity
 
-#Problem is cart object is not updated even when the pizza added
 
 class Cart():
 
@@ -27,10 +26,6 @@ class Cart():
         self.items.append(item)
         self.amount.append(bill)
         self.bill += float(bill)
-    
-    def get_bill(self):
-        # print(self)
-        return self.bill
     
     def view_cart(self):
         '''
@@ -65,7 +60,8 @@ class Cart():
 
     def remove_item(self):
         '''
-        Listing all the items in the cart to remove at a position
+        Listing all the items with the indexes
+        So that items can be removed at that index
         '''
         try:
             if(self.count > 0):
@@ -94,6 +90,8 @@ class Payment(Cart):
         print("Processing Your Payment!")
         '''
         Method provides discount facility, which is prebuilt
+        Yes and No option is asked to the user so that
+        the bill and discound can be applied before taxes
         '''
         discount = input("\nDo you have an discount coupon, Yes or No:\n")
         if discount.upper() == 'YES':
@@ -105,6 +103,11 @@ class Payment(Cart):
         print("payment is successful!\n")
 
 class Food(Cart):
+    '''
+     Main class holds valuable dictionaries with menu and the prices
+     Inherited from the cart so that it has all the properties to 
+     add and remove the data in the Cart class
+    '''
 
     def __init__(self):
         super().__init__()
@@ -118,6 +121,9 @@ class Food(Cart):
         self.drink_list = list(self.drink.keys())
     
     def getSize(self, type):
+        '''
+        Returns the size
+        '''
         return int(input(f"\nPlease select the following size for {type},\n1.Regular\n2.Medium\n3.Large\n"))
 
     def makePizza(self):
@@ -136,7 +142,6 @@ class Food(Cart):
         except ValueError:
             print("Invalid Option!")
         
-
     def makeBread(self):
         '''
         This method is used to add breads to cart
@@ -188,6 +193,7 @@ class Food(Cart):
 def main():
     '''
     This method is an entry to Domino's Pizza Service
+    There are 1 - 8 options in order to generate order
     '''
     try:
         print("Welcome to Domino's Pizza!\nWhat are you having today?\n")
