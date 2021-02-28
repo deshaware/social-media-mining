@@ -1,14 +1,21 @@
-#Author: Swapnil Ghanshyam Deshaware
-#: Social Media and Data Mining Assignment 1
+"""Author: Swapnil Ghanshyam Deshaware
+Social Media and Data Mining Assignment 1
 
 #Domino's Pizza Counter
 #Start with welcome, option to choose categories
 #Categories - Pizza,Sides(Bread), Soda
 #Payment - Billing and tax
 #Discount - Depends on the month, default selected march for simplicity
-
+"""
 
 class Cart():
+    '''
+    Cart class to store 
+    Items
+    Amount
+    Count of Items
+    Total Bill
+    '''
 
     def __init__(self):
         '''
@@ -33,12 +40,13 @@ class Cart():
         '''
         if self.count > 0:
             print("=====================My Cart========================")
-            for i in range(self.count):
-                print(f"{int(i+1)}. {self.items[i]}           \t${round(float(self.amount[i]),2)}".title())
+            #Dictionary comprehension
+            mycart = { (key+1): (item,round(float(self.amount[key]),2)) for (key,item) in enumerate(self.items)}
+            for key,(item,amount) in mycart.items():
+                print(f"{key}. {item}             \t${amount}".title())
         else:
             print("Your cart is empty\n")
 
-    
     def view_bill(self, discount):
         '''
         A total bill can be viewed, total bill, tax etc and
@@ -94,7 +102,7 @@ class Payment(Cart):
         the bill and discound can be applied before taxes
         '''
         discount = input("\nDo you have an discount coupon, Yes or No:\n")
-        if discount.upper() == 'YES':
+        if discount.upper() in ['YES', 'Y', 'Ye']:
             print(f"Your bill with discount before tax is ${round(food.bill * self.coupons['MAR'], 2)}\n") 
             food.view_bill(True)
         else:
@@ -179,15 +187,27 @@ class Food(Cart):
         To Print The Menu
         '''
         sb = "Our Today's Menu is\n"
-        sb += "\tPizza\n"
-        for (key, item) in enumerate(self.pizza.keys()):
-            sb += str(key+1) + "\t" + item.title() + " Pizza \n"
-        sb += "\tBreads\n"
-        for(key, item) in enumerate(self.bread.keys()):
-            sb += str(key+1) + "\t" + item.title() + " Bread \n"
-        sb += "\tDrinks\n"
-        for(key, item) in enumerate(self.drink.keys()):
-            sb += str(key+1) + "\t" + item.title() + " \n"
+        
+        pizza = [ "=> " +pizza.title()+" Pizza   \t\t$"+str(price) for pizza, price in self.pizza.items() ]
+        bread = [ "=> " +bread.title()+" Bread   \t\t$"+str(float(price)) for bread, price in self.bread.items() ]
+        soda = [ "=> " +drink.title()+" drink    \t\t$"+str(price) for drink, price in self.drink.items() ]
+        sb += "\n\tPizza\n\t-----\n"
+        for i in pizza:
+            sb += i + "\n"
+        sb += "\n\tBreads\n\t------\n"
+        for i in bread:
+            sb += i + "\n"
+        sb += "\n\tDrinks\n\t------\n"
+        for i in soda:
+            sb += i + "\n"
+        # for (key, item) in enumerate(self.pizza.keys()):
+        #     sb += str(key+1) + "\t" + item.title() + " Pizza \n"
+        # sb += "\n\tBreads\n\n"
+        # for(key, item) in enumerate(self.bread.keys()):
+        #     sb += str(key+1) + "\t" + item.title() + " Bread \n"
+        # sb += "\n\tDrinks\n\n"
+        # for(key, item) in enumerate(self.drink.keys()):
+        #     sb += str(key+1) + "\t" + item.title() + " \n"
         return sb
 
 def main():
