@@ -1,5 +1,7 @@
-"""Author: Swapnil Ghanshyam Deshaware
+"""
 Social Media and Data Mining Assignment 1
+Author: Swapnil Ghanshyam Deshaware
+SUID: 253579042
 
 #Domino's Pizza Counter
 #Start with welcome, option to choose categories
@@ -36,7 +38,7 @@ class Cart():
     
     def view_cart(self):
         '''
-        view_cart which will show the items inside the cart
+        View the current cart which will show the items inside the cart
         '''
         if self.count > 0:
             print("=====================My Cart========================")
@@ -130,13 +132,13 @@ class Food(Cart):
     
     def getSize(self, type):
         '''
-        Returns the size
+        Returns the available size of breads, pizza and drinks
         '''
         return int(input(f"\nPlease select the following size for {type},\n1.Regular\n2.Medium\n3.Large\n"))
 
     def makePizza(self):
         '''
-        This method is used to add pizza to the cart
+        It adds pizza to the cart
         '''
         try:
             size = self.getSize('pizza')
@@ -152,7 +154,7 @@ class Food(Cart):
         
     def makeBread(self):
         '''
-        This method is used to add breads to cart
+        It adds breads to cart
         '''
         try:
             size = self.getSize('bread')
