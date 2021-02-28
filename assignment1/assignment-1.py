@@ -3,7 +3,7 @@ Social Media and Data Mining Assignment 1
 
 #Domino's Pizza Counter
 #Start with welcome, option to choose categories
-#Categories - Pizza,Sides(Bread), Soda
+#Categories - Pizza, Bread and Soda
 #Payment - Billing and tax
 #Discount - Depends on the month, default selected march for simplicity
 """
@@ -187,7 +187,7 @@ class Food(Cart):
         To Print The Menu
         '''
         sb = "Our Today's Menu is\n"
-        
+        #list comprehension
         pizza = [ "=> " +pizza.title()+" Pizza   \t\t$"+str(price) for pizza, price in self.pizza.items() ]
         bread = [ "=> " +bread.title()+" Bread   \t\t$"+str(float(price)) for bread, price in self.bread.items() ]
         soda = [ "=> " +drink.title()+" drink    \t\t$"+str(price) for drink, price in self.drink.items() ]
@@ -200,14 +200,6 @@ class Food(Cart):
         sb += "\n\tDrinks\n\t------\n"
         for i in soda:
             sb += i + "\n"
-        # for (key, item) in enumerate(self.pizza.keys()):
-        #     sb += str(key+1) + "\t" + item.title() + " Pizza \n"
-        # sb += "\n\tBreads\n\n"
-        # for(key, item) in enumerate(self.bread.keys()):
-        #     sb += str(key+1) + "\t" + item.title() + " Bread \n"
-        # sb += "\n\tDrinks\n\n"
-        # for(key, item) in enumerate(self.drink.keys()):
-        #     sb += str(key+1) + "\t" + item.title() + " \n"
         return sb
 
 def main():
