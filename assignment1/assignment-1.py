@@ -1,7 +1,8 @@
 """
-Social Media and Data Mining Assignment 1
+CIS-600 - Social Media and Data Mining, Assignment 1
 Author: Swapnil Ghanshyam Deshaware
 SUID: 253579042
+SUbmission:  77d61b5b-c26c-43e2-814d-46943e0e598d
 
 #Domino's Pizza Counter
 #Start with welcome, option to choose categories
