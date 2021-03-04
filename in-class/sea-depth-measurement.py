@@ -19,7 +19,7 @@ def depth5(ans):
             count += 1
     
     if d + fact == ans:
-        count -= 1
+        return count
     else:
         while d + fact != ans:
             if(d + int(fact/2)) < ans:
@@ -34,36 +34,28 @@ def depth5(ans):
 
 def depth4(ans):
     count = 0
-    d = 10
-    fact = 10
+    d = 1
+    fact = 1
     count += 1
-    while True:
+    while (d * 10) < ans:
+        d = d * 10
+        fact = fact * 10
         count += 1
-        if (d * 10) < ans:
-            d = d * 10
-            fact = fact * 10
-        else:
-            break
-    while True:
+
+    count +=1 
+    while (d + fact) < ans:
+        d = d + fact
         count += 1
-        if (d + fact) < ans:
-            d = d + fact
-        else:
-            break
-    if d > ans:
-        d = 1
-        count += 1
-    while d != ans:
-        if d + fact == ans:
-            break
-        elif(d + int(fact/2)) < ans:
-            count += 1
+    
+    if d + fact == ans:
+        return count 
+    else:
+        while d + fact != ans:
+            if(d + int(fact/2)) < ans:
+                d = d + int(fact / 2)
             fact = int(fact / 2)
-            d = d + fact
-        else:
             count += 1
-            fact = int(fact / 2)
-        
+            
     return count + 1
 
 def depth3(ans):
@@ -154,7 +146,7 @@ def depth(d, fact, count):
 def main():
     # measurement = depth(10, 10, 0)
     # print(measurement)
-    ans2 = depth5(11306)
+    ans2 = depth4(301)
     print(ans2)
 
 ans = 27
