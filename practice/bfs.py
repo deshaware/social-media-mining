@@ -1,66 +1,44 @@
-# Python3 Program to print BFS traversal
-# from a given source vertex. BFS(int s)
-# traverses vertices reachable from s.
-from collections import defaultdict
+from collections import deque
 
-# This class represents a directed graph
-# using adjacency list representation
-class Graph:
+def BFS(G, src, dest):
+	result = []
+	dist = [999] * len(G)
+	path = [0] * len(G)
 
-	# Constructor
-	def __init__(self):
+	Q = deque()
+	Q.append(src)
 
-		# default dictionary to store graph
-		self.graph = defaultdict(list)
+	dist[src] = 0
+	path[src] = -1
 
-	# function to add an edge to graph
-	def addEdge(self,u,v):
-		self.graph[u].append(v)
+	while len(Q) != 0:
+		u = Q.popleft()
+		if u == dest:
+			result.append(path)
+		
+		edges = [i for (i,j) in enumerate(G[u]) if j > 0 and j < 999]
 
-	# Function to print a BFS of graph
-	def BFS(self, s):
+		for v in edges:
+			# if dist[v] == 999:
+			# 	dist[v] = dist[u] + 1
+				path[v] = u
+				Q.append(v)
+			# if dist[v] < dist[u] + G[u][v]:
+			# # 	dist[v] = dist[u] + G[u][v]
+			# 	path[v] = u
+			# 	Q.append(v)	
 
-		# Mark all the vertices as not visited
-		visited = [False] * (max(self.graph) + 1)
+	return result
+	
+if __name__ == '__main__':
+    	G = [ 
+			[0, 2, 2, 999, 999, 999],
+			[2, 0, 999, 2, 999, 999],
+			[2, 999, 0, 999, 2, 999],
+			[999, 2, 999, 0, 999, 2],
+			[999, 999, 2, 999, 0, 999],
+			[999, 999, 999, 2, 999, 0]
+		]
+    	print(BFS(G,0,5))
+	
 
-		# Create a queue for BFS
-		queue = []
-
-		# Mark the source node as 
-		# visited and enqueue it
-		queue.append(s)
-		visited[s] = True
-
-		while queue:
-
-			# Dequeue a vertex from 
-			# queue and print it
-			s = queue.pop(0)
-			print (s, end = " ")
-
-			# Get all adjacent vertices of the
-			# dequeued vertex s. If a adjacent
-			# has not been visited, then mark it
-			# visited and enqueue it
-			for i in self.graph[s]:
-				if visited[i] == False:
-					queue.append(i)
-					visited[i] = True
-
-# Driver code
-
-# Create a graph given in
-# the above diagram
-g = Graph()
-g.addEdge(0, 1)
-g.addEdge(0, 2)
-g.addEdge(1, 2)
-g.addEdge(2, 0)
-g.addEdge(2, 3)
-g.addEdge(3, 3)
-
-print ("Following is Breadth First Traversal"
-				" (starting from vertex 2)")
-g.BFS(1)
-
-# This code is contributed by Neelam Yadav
