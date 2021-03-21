@@ -1,0 +1,5 @@
+
+Size of Network in terms of Nodes : 101
+Size of Network in terms of Edges : : 100
+Size of Network in terms of Diameter : 7
+Size of Network in terms of Average distance : 4.918811881188119
