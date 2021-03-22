@@ -1,3 +1,10 @@
+'''
+CIS-600 - Social Media and Data Mining, Assignment 2
+Author: Swapnil Ghanshyam Deshaware
+SUID: 253579042
+Assignment - Social Network Generation for a Twitter user
+'''
+
 import twitter
 import json
 import networkx
@@ -10,7 +17,9 @@ from functools import partial
 from sys import maxsize as maxint
 from http.client import BadStatusLine
 
+# ID="165035772"
 ID="141631266"
+ID="1116860554902233088" #Nivi
 NAME="Swapnil Deshaware"
 USERNAME="_arsenalistq"
 MAX_FRIENDS=5000
@@ -21,35 +30,43 @@ def oauth_login():
     '''
     A static method to authenticate user
     '''
-    #mine
-    CONSUMER_KEY = 'agQmGHFcg9CDeoUSXUFvdPllT'
-    CONSUMER_SECRET = 'N9rqHRmzCJt4SALlxWOCbYyXno0khHnbFTwBFVnrqEKWA1VlfL'
-    BEARER_TOKEN= "AAAAAAAAAAAAAAAAAAAAAE04NwEAAAAAjQ9nJ%2BLef%2Fkj3cM1txJPOBATLJk%3DisQRS6PBXd5VLdOFUFgirQpkoK5oygGUbLMku7G0vYetzIyYJt"
-    
-    auth = twitter.OAuth2(CONSUMER_KEY, CONSUMER_SECRET, BEARER_TOKEN)
-    
-    twitter_api = twitter.Twitter(auth=auth)
-    return twitter_api
 
-def get_user(twitter_api, id):
-    user = twitter_api.users.show(user_id=id)
-    return user
-
-def make_twitter_request(twitter_api_func, max_errors=10, *args, **kw): 
+    # CONSUMER_KEY = 'agQmGHFcg9CDeoUSXUFvdPl lT'
+    # CONSUMER_SECRET = 'N9rqHRmzCJt4SALlxWOCbYyXno0khHnbFTwBFVnrqEKWA1VlfL'
+    # BEARER_TOKEN= "AAAAAAAAAAAAAAAAAAAAAE04NwEAAAAAjQ9nJ%2BLef%2Fkj3cM1txJPOBATLJk%3DisQRS6PBXd5VLdOFUFgirQpkoK5oygGUbLMku7G0vYetzIyYJt"
     
-    # A nested helper function that handles common HTTPErrors. Return an updated
-    # value for wait_period if the problem is a 500 level error. Block until the
-    # rate limit is reset if it's a rate limiting issue (429 error). Returns None
-    # for 401 and 404 errors, which requires special handling by the caller.
+    # auth = twitter.OAuth2(CONSUMER_KEY, CONSUMER_SECRET, BEARER_TOKEN)
+    
+    # api = twitter.Twitter(auth=auth)
+    CONSUMER_KEY = 'GtKCOlFU3FdssbD72oZ1ZinvI'
+    CONSUMER_SECRET = 'IBLRYFUtXoVRz5xSdyXzHWamQDRJ7fSlOFzUirgQyGhAtBmzBc'
+    OAUTH_TOKEN = '450374202-XCPUaCDzMYqg9E4egMhwqMBXyxsD13KPjhwbQyxR'
+    OAUTH_TOKEN_SECRET = 'Ho1LLC1wpsPy9yRCxT3GgRVAGnxzklQFBhtzra1BdRuf7'
+
+    auth = twitter.oauth.OAuth(OAUTH_TOKEN, OAUTH_TOKEN_SECRET,
+                                CONSUMER_KEY, CONSUMER_SECRET)
+
+    api = twitter.Twitter(auth=auth)
+
+    return api
+
+
+def make_twitter_request(api_func, max_errors=10, *args, **kw): 
+    '''
+    A nested helper function that handles common HTTPErrors. Return an updated
+    value for wait_period if the problem is a 500 level error. Block until the
+    rate limit is reset if it's a rate limiting issue (429 error). Returns None
+    for 401 and 404 errors, which requires special handling by the caller.
+    '''
+
     def handle_twitter_http_error(e, wait_period=2, sleep_when_rate_limited=True):
+        '''
+        This helper function handles run-time error such as 429, it sleeps until the timeout
+        '''
     
         if wait_period > 3600: # Seconds
             print('Too many retries. Quitting.', file=sys.stderr)
-            raise e
-    
-        # See https://developer.twitter.com/en/docs/basics/response-codes
-        # for common codes
-    
+            raise e    
         if e.e.code == 401:
             print('Encountered 401 Error (Not Authorized)', file=sys.stderr)
             return None
@@ -65,23 +82,21 @@ def make_twitter_request(twitter_api_func, max_errors=10, *args, **kw):
                 print('...ZzZ...Awake now and trying again.', file=sys.stderr)
                 return 2
             else:
-                raise e # Caller must handle the rate limiting issue
+                raise e 
         elif e.e.code in (500, 502, 503, 504):
-            print('Encountered {0} Error. Retrying in {1} seconds'                  .format(e.e.code, wait_period), file=sys.stderr)
+            print('Encountered {0} Error. Retrying in {1} seconds'.format(e.e.code, wait_period), file=sys.stderr)
             time.sleep(wait_period)
             wait_period *= 1.5
             return wait_period
         else:
             raise e
 
-    # End of nested helper function
-    
     wait_period = 2 
     error_count = 0 
 
     while True:
         try:
-            return twitter_api_func(*args, **kw)
+            return api_func(*args, **kw)
         except twitter.api.TwitterHTTPError as e:
             error_count = 0 
             wait_period = handle_twitter_http_error(e, wait_period)
@@ -105,28 +120,24 @@ def make_twitter_request(twitter_api_func, max_errors=10, *args, **kw):
                 raise
 
 
-def get_user_profile(twitter_api, screen_names=None, user_ids=None):
-       
-    # Must have either screen_name or user_id (logical xor)
-    assert (screen_names != None) != (user_ids != None),     "Must have screen_names or user_ids, but not both"
-    
+def get_user_profile(api, screen_names=None, user_ids=None):
+    '''
+    This method helps getting user profile by id or name, it 
+    '''
+    assert (screen_names != None) != (user_ids != None), "Must have screen_names or user_ids, but not both"
     items_to_info = {}
-
     items = screen_names or user_ids
     
     while len(items) > 0:
 
-        # Process 100 items at a time per the API specifications for /users/lookup.
-        # See    for details.
-        
         items_str = ','.join([str(item) for item in items[:100]])
         items = items[100:]
 
         if screen_names:
-            response = make_twitter_request(twitter_api.users.lookup, 
+            response = make_twitter_request(api.users.lookup, 
                                             screen_name=items_str)
         else: # user_ids
-            response = make_twitter_request(twitter_api.users.lookup, 
+            response = make_twitter_request(api.users.lookup, 
                                             user_id=items_str)
     
         for user_info in response:
@@ -137,34 +148,34 @@ def get_user_profile(twitter_api, screen_names=None, user_ids=None):
 
     return items_to_info
 
-def get_friends(api, id):
-    return api.friends.ids(user_id=id,count=5000)
+def get_friends(api, ID):
+    return api.friends.ids(user_id=ID,count=5000)
 
-def get_followers(api, id):
-    return api.followers.ids(user_id=id, count=5000)
+def get_followers(api, ID):
+    return api.followers.ids(user_id=ID, count=5000)
 
 def pretty_print(data):
+    '''
+    To print the data in readable json format
+    '''
     print(json.dumps(data, sort_keys=True, indent=1))
 
-def get_friends_followers_ids(twitter_api, screen_name=None, user_id=None,
+def get_friends_followers_ids(api, screen_name=None, user_id=None,
                               friends_limit=maxint, followers_limit=maxint):
-    
-    # Must have either screen_name or user_id (logical xor)
-    assert (screen_name != None) != (user_id != None),     "Must have screen_name or user_id, but not both"
-    
-    # See http://bit.ly/2GcjKJP and http://bit.ly/2rFz90N for details
-    # on API parameters
-    
-    get_friends_ids = partial(make_twitter_request, twitter_api.friends.ids, count=5000)
-    get_followers_ids = partial(make_twitter_request, twitter_api.followers.ids, count=5000)
+    '''
+    The function takes twitter api input of a user and and returns friends and followers
+    This function is taken from the twitter cookbook
+    '''
 
-    friends_ids, followers_ids = [], []
+    assert (screen_name != None) != (user_id != None), "Must have screen_name or user_id, but not both"
     
-    for twitter_api_func, limit, ids, label in [
+    get_friends_ids = partial(make_twitter_request, api.friends.ids, count=5000)
+    get_followers_ids = partial(make_twitter_request, api.followers.ids, count=5000)
+    friends_ids, followers_ids = [], []
+    for api_func, limit, ids, label in [
                     [get_friends_ids, friends_limit, friends_ids, "friends"], 
                     [get_followers_ids, followers_limit, followers_ids, "followers"]
                 ]:
-        
         if limit == 0: continue
         
         cursor = -1
@@ -172,26 +183,24 @@ def get_friends_followers_ids(twitter_api, screen_name=None, user_id=None,
         
             # Use make_twitter_request via the partially bound callable...
             if screen_name: 
-                response = twitter_api_func(screen_name=screen_name, cursor=cursor)
+                response = api_func(screen_name=screen_name, cursor=cursor)
             else: # user_id
-                response = twitter_api_func(user_id=user_id, cursor=cursor)
+                response = api_func(user_id=user_id, cursor=cursor)
 
             if response is not None:
                 ids += response['ids']
                 cursor = response['next_cursor']
         
             print('Fetched {0} total {1} ids for {2}'.format(len(ids),label, (user_id or screen_name)),file=sys.stderr)
-        
-            # XXX: You may want to store data during each iteration to provide an 
-            # an additional layer of protection from exceptional circumstances
-        
             if len(ids) >= limit or response is None:
                 break
 
-    # Do something useful with the IDs, like store them to disk...
     return friends_ids[:friends_limit], followers_ids[:followers_limit]
 
 def get_top_followers(api, all_followers):
+    '''
+    Get the top connections who has highest of followers
+    '''
     top_followers = {}
     for follower in all_followers:
         followers_info = get_user_profile(api, user_ids = [follower])
@@ -206,6 +215,11 @@ def get_top_followers(api, all_followers):
     return top_followers
 
 def get_top_5_reciprocal_friends(api, id):
+    '''
+    Get top 5 reciprocal friends for given argument id
+    This function provides top 5 reciprocal friends which are followers and friends
+    of the given user id
+    '''
     friends_ids, followers_ids = get_friends_followers_ids(api,
                                                     user_id = id, 
                                                     friends_limit=50, 
@@ -214,14 +228,14 @@ def get_top_5_reciprocal_friends(api, id):
 
 def crawl_followers(api, graph_obj, screen_name, minimum_limit=100, depth=2):
         user_info = make_twitter_request(api.users.show, screen_name=screen_name)
-        id = user_info['id']
+        ID = user_info['id']
 
         connection_dictionary = {}
         connection_graph_list = []
         unique_friends = []
-        next_queue = get_top_5_reciprocal_friends(api, id)
-        connection_dictionary.update({id : list(next_queue)})
-        connection_graph_list.append(id)
+        next_queue = get_top_5_reciprocal_friends(api, ID)
+        connection_dictionary.update({ID : list(next_queue)})
+        connection_graph_list.append(ID)
         connection_graph_list.extend(list(next_queue.keys())) 
         graph_obj.add_a_node(id)
         graph_obj.add_node(list(next_queue.keys()))
@@ -254,7 +268,10 @@ def crawl_followers(api, graph_obj, screen_name, minimum_limit=100, depth=2):
         return connection_dictionary
 
 class Graph:
-    
+    '''
+    The graph class helps with a networkx object to create a graph
+
+    '''
     #--------------< Constructor of the class to define the sn = social network graph >-----------------
     def __init__(self):
         self.network_graph = networkx.Graph()
@@ -299,48 +316,44 @@ class Graph:
 
 
 if __name__ == '__main__':
-    api = oauth_login()
     try:
-        followers = get_followers(api, ID)
-        # pretty_print(followers["ids"])
-        friends = get_friends(api, ID)
-        # pretty_print(friends)
-        followers["ids"]
+        api = oauth_login()
+        print("\n\nTask-1: ")
+        print("username", USERNAME)
+        print("Screen_Name", NAME)
+
+        print("Current User")
+        pretty_print(make_twitter_request(api.users.show,user_id=ID)["description"])
+
+        print("\n\nTask-2: ")
+        followers =  make_twitter_request(api.friends.ids, user_id=ID,count=5000)
+        friends = make_twitter_request(api.friends.ids, user_id=ID,count=5000)
+
+        print("Followers", followers["ids"])
+        print("\nFriends", friends["ids"])
 
         reciprocal_friends = set(followers["ids"]) & set(friends["ids"])
         reciprocal_friends = [i for i in reciprocal_friends]
+        print("\n\nTask-3 Distance-1 Reciprocal Friends")
+        print("\nReciprocal Friends", reciprocal_friends)
 
-        print(reciprocal_friends.pop())
-        print(reciprocal_friends)
-        # top 5 reciprocal friends
-
-        #get profile
         user_profiles = get_user_profile(api,user_ids=list(reciprocal_friends))
-        # for i in user_profiles:
-        #     print(user_profiles[i]["screen_name"], " ", user_profiles[i]["followers_count"])
-        
+
         #sort
         user_profiles_data = [ j for i,j in user_profiles.items()]
         newlist = sorted(user_profiles_data, key=itemgetter('followers_count'), reverse=True)
         top_user_profiles = newlist[:5]
+        print("\n\nTask-4 Most Popular Reciprocal Friends")
+        print([i["id"] for i in top_user_profiles])
 
-        print("\n\nSolution for task-5: ")
-        print("\nMoving to the friends of user who are at 'distance-1', 'distance-2' etc form a network")
+        print("\n\nTask-5 and Task-6: Crawling Followers and create network for ", USERNAME)
+        print("\nCreating a network for 'distance-1', 'distance-2' and so on ")
         graph = Graph()
         crawl_followers(api, graph, screen_name = USERNAME, minimum_limit=100, depth = 10)
 
-        print("\n\nSolution for task-6: ")
-        print("\nCreating a social network based on the results from Req 5")
+        print("\n\nTask-7: ")
+        print("\nBuilding a network based on task-5")
         graph.display_graph()
 
     except RuntimeError as e:
         print("error", e)
-    
-
-
-
-    
-
-
-
-    
