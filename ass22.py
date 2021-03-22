@@ -6,22 +6,23 @@ Assignment - Social Network Generation for a Twitter user
 '''
 
 import twitter
-import networkx
 import json
-from functools import partial
-from sys import maxsize as maxint
-from http.client import BadStatusLine
+import networkx
 import matplotlib.pyplot as plt
 import sys
 import time
 from urllib.error import URLError
 from operator import itemgetter
+from functools import partial
+from sys import maxsize as maxint
+from http.client import BadStatusLine
 
-
-USERNAME="_arsenalistq"
 ID="141631266"
 NAME="Swapnil Deshaware"
-
+USERNAME="_arsenalistq"
+MAX_FRIENDS=5000
+MAX_FOLLOWERS=5000
+MAX_NODES=100
 
 def oauth_login():
     '''
@@ -29,23 +30,24 @@ def oauth_login():
     It uses OAuth2.0 specification which takes a bearer token to authenticate user
     '''
 
-    CONSUMER_KEY = 'agQmGHFcg9CDeoUSXUFvdPl lT'
-    CONSUMER_SECRET = 'N9rqHRmzCJt4SALlxWOCbYyXno0khHnbFTwBFVnrqEKWA1VlfL'
-    BEARER_TOKEN= "AAAAAAAAAAAAAAAAAAAAAE04NwEAAAAAjQ9nJ%2BLef%2Fkj3cM1txJPOBATLJk%3DisQRS6PBXd5VLdOFUFgirQpkoK5oygGUbLMku7G0vYetzIyYJt"
+    # CONSUMER_KEY = 'agQmGHFcg9CDeoUSXUFvdPl lT'
+    # CONSUMER_SECRET = 'N9rqHRmzCJt4SALlxWOCbYyXno0khHnbFTwBFVnrqEKWA1VlfL'
+    # BEARER_TOKEN= "AAAAAAAAAAAAAAAAAAAAAE04NwEAAAAAjQ9nJ%2BLef%2Fkj3cM1txJPOBATLJk%3DisQRS6PBXd5VLdOFUFgirQpkoK5oygGUbLMku7G0vYetzIyYJt"
     
-    auth = twitter.OAuth2(CONSUMER_KEY, CONSUMER_SECRET, BEARER_TOKEN)
-    api = twitter.Twitter(auth=auth)
-    return api
-    # CONSUMER_KEY = 'GtKCOlFU3FdssbD72oZ1ZinvI'
-    # CONSUMER_SECRET = 'IBLRYFUtXoVRz5xSdyXzHWamQDRJ7fSlOFzUirgQyGhAtBmzBc'
-    # OAUTH_TOKEN = '450374202-XCPUaCDzMYqg9E4egMhwqMBXyxsD13KPjhwbQyxR'
-    # OAUTH_TOKEN_SECRET = 'Ho1LLC1wpsPy9yRCxT3GgRVAGnxzklQFBhtzra1BdRuf7'
-
-    # auth = twitter.oauth.OAuth(OAUTH_TOKEN, OAUTH_TOKEN_SECRET,
-    #                             CONSUMER_KEY, CONSUMER_SECRET)
-
+    # auth = twitter.OAuth2(CONSUMER_KEY, CONSUMER_SECRET, BEARER_TOKEN)
     # api = twitter.Twitter(auth=auth)
     # return api
+    CONSUMER_KEY = 'GtKCOlFU3FdssbD72oZ1ZinvI'
+    CONSUMER_SECRET = 'IBLRYFUtXoVRz5xSdyXzHWamQDRJ7fSlOFzUirgQyGhAtBmzBc'
+    OAUTH_TOKEN = '450374202-XCPUaCDzMYqg9E4egMhwqMBXyxsD13KPjhwbQyxR'
+    OAUTH_TOKEN_SECRET = 'Ho1LLC1wpsPy9yRCxT3GgRVAGnxzklQFBhtzra1BdRuf7'
+
+    auth = twitter.oauth.OAuth(OAUTH_TOKEN, OAUTH_TOKEN_SECRET,
+                                CONSUMER_KEY, CONSUMER_SECRET)
+
+    api = twitter.Twitter(auth=auth)
+    return api
+
 
 def make_twitter_request(api_func, max_errors=10, *args, **kw): 
     '''
@@ -127,24 +129,23 @@ def get_user_profile(api, screen_names=None, user_ids=None):
     items = screen_names or user_ids
     
     while len(items) > 0:
-        try:
-            items_str = ','.join([str(item) for item in items[:100]])
-            items = items[100:]
 
+        items_str = ','.join([str(item) for item in items[:100]])
+        items = items[100:]
+
+        if screen_names:
+            response = make_twitter_request(api.users.lookup, 
+                                            screen_name=items_str)
+        else: # user_ids
+            response = make_twitter_request(api.users.lookup, 
+                                            user_id=items_str)
+    
+        for user_info in response:
             if screen_names:
-                response = make_twitter_request(api.users.lookup, 
-                                                screen_name=items_str)
+                items_to_info[user_info['screen_name']] = user_info
             else: # user_ids
-                response = make_twitter_request(api.users.lookup, 
-                                                user_id=items_str)
-        
-            for user_info in response:
-                if screen_names:
-                    items_to_info[user_info['screen_name']] = user_info
-                else: # user_ids
-                    items_to_info[user_info['id']] = user_info
-        except TypeError:
-            return []
+                items_to_info[user_info['id']] = user_info
+
     return items_to_info
 
 def pretty_print(data):
@@ -219,73 +220,113 @@ def get_top_5_reciprocal_friends(api, id):
                                                     followers_limit=50)
     return get_top_followers(api, set(friends_ids) & set(followers_ids))
 
-def crawl_my_followers(api, graph, screen_name, minimum_limit):
+def crawl_followers(api, graph_obj, screen_name, minimum_limit=100, depth=2):
     '''
     This method crawls the followers and creates a network until we reach node 100
     The logic behind this implementation is based on the queue, which takes top 5 reciprocal friends
-    of the node and create edges between them
+    of the node and create edges between them, if the node has child already, it will 
     '''
+    user_info = make_twitter_request(api.users.show, screen_name=screen_name)
+    ID = user_info['id']
     network_graph = []
     unique_friends = []
     #dictionary to store information about nodes and the edges
     network_dict = {}
-    try:
-        user_info = make_twitter_request(api.users.show, screen_name=screen_name)
-        ID = user_info['id']
-        
-        next_queue = get_top_5_reciprocal_friends(api, ID)
-        network_dict.update({ID : list(next_queue)})
-        network_graph.append(ID)
-        network_graph.extend(list(next_queue.keys())) 
-        add_a_node(graph, ID)
-        add_node(graph, list(next_queue.keys()))
-        for n in list(next_queue.keys()):
-            add_an_edge(graph, (ID,n))
+    next_queue = friends_followers_top5_reciprocals(api, ID)
+    network_dict.update({ID : list(next_queue)})
+    network_graph.append(ID)
+    network_graph.extend(list(next_queue.keys())) 
+    graph_obj.add_a_node(id)
+    graph_obj.add_node(list(next_queue.keys()))
+    for n in list(next_queue.keys()):
+        graph_obj.add_a_edge((id,n))
+    d = 1
+    #initiating the queue with a user's top 5 reciprocal friends
+    next_queue_list = list(next_queue.keys())
+    while len(network_graph) < minimum_limit :
+        print("Size of the graph is : ", len(network_graph))
+        d += 1
+        (queue, next_queue_list) = (list(set(next_queue_list)), [])
+        for fid in queue:
+            top_5_reciprocal_friends = friends_followers_top5_reciprocals(api,fid)
+            
+            #calculate unique friends and add them into the network graph
+            unique_friends = list(set(top_5_reciprocal_friends) - set(network_graph))
+            print("Friends", unique_friends)
+            print("network_graph size is", len(network_graph))
+            print("network_dict size is", len(network_dict))
+            network_graph += unique_friends
+            #adding new nodes to graph
+            graph_obj.add_node(unique_friends)
+            for n in top_5_reciprocal_friends:
+                graph_obj.add_a_edge((fid,n))
+            
+            #Update the dictionary based on the unique node found
+            network_dict.update({fid : unique_friends})
+            next_queue_list +=  unique_friends
+            if(len(network_dict) > minimum_limit):
+                return network_dict
+            if(len(network_graph) > minimum_limit):
+                return network_dict
+    return network_dict
 
-        #initiating the queue with a user's top 5 reciprocal friends
-        next_queue_list = list(next_queue.keys())
-        while len(network_graph) < minimum_limit :
-            print("Size of the graph is : ", len(network_graph))
-            (queue, next_queue_list) = (list(set(next_queue_list)), [])
-            for fid in queue:
-                top_5_reciprocal_friends = get_top_5_reciprocal_friends(api,fid)
-                
-                #calculate unique friends and add them into the network graph
-                unique_friends = list(set(top_5_reciprocal_friends) - set(network_graph))
-                print("Unique Friends", unique_friends)
-                print("Graph size is", len(network_graph))
-                print("network_dict size is", len(network_dict))
-                network_graph += unique_friends
-                #adding new nodes to graph
-                add_node(graph, unique_friends)
-                for n in top_5_reciprocal_friends:
-                    add_an_edge(graph, (fid,n))
-                
-                #Update the dictionary based on the unique node found
-                network_dict.update({fid : unique_friends})
-                next_queue_list +=  unique_friends
-                if(len(network_dict) > minimum_limit):
-                    return network_dict
-                if(len(network_graph) > minimum_limit):
-                    return network_dict
-        return network_dict
-    except RuntimeError:
-        return network_dict
-    
-def add_node(graph, node_list):
-    graph.add_nodes_from(node_list)
+class Graph:
+    '''
+    The graph class helps with a networkx object to create a graph.
+    It uses BFS(Breadth First Search) to create nodes and edges to form a network
+    '''
+    def __init__(self):
+        self.network_graph = networkx.Graph()
 
-# Add a node to the existing graph 
-def add_a_node(graph, node):
-    graph.add_node(node)
+    # Add nodes 
+    def add_node(self, node_list):
+        self.network_graph.add_nodes_from(node_list)
 
-#Add edges from a list to the existing graph 
-def add_edge(graph, edge_list):
-    graph.add_edges_from(edge_list)
+    # Add a node to the existing graph 
+    def add_a_node(self, node):
+        self.network_graph.add_node(node)
 
-# Add a edge to the existing graph 
-def add_an_edge(graph, edge):
-    graph.add_edge(*edge)
+    #Add edges from a list to the existing graph 
+    def add_edge(self, edge_list):
+        self.network_graph.add_edges_from(edge_list)
+
+    # Add a edge to the existing graph 
+    def add_a_edge(self, edge):
+        self.network_graph.add_edge(*edge)
+
+    # Display the graph information on the console
+    def display_graph(self):
+        '''
+        This method belongs to class Graph and used for displaying the graph
+        '''
+        file = open("FinalOutputFile.txt","w") 
+
+        file.write("\nNumber of Nodes : " + str(self.network_graph.number_of_nodes())) 
+        print("Number of nodes : ", self.network_graph.number_of_nodes())
+
+        file.write("\nNumber of of Edges : " + str(self.network_graph.number_of_edges()))
+        print("Number of edges : : ",self.network_graph.number_of_edges())
+
+        file.write("\n Diameter : " + str(networkx.diameter(self.network_graph, e=None, usebounds=False)))
+        print("Diameter : " , networkx.diameter(self.network_graph, e=None, usebounds=False))
+
+        file.write("\nAverage distance : " +  str(networkx.average_shortest_path_length(self.network_graph, weight=None)))
+        print("Average distance : " , networkx.average_shortest_path_length(self.network_graph, weight=None))
+
+        file.close() 
+        networkx.draw(self.network_graph, with_labels=True)
+        plt.savefig('output.png', bbox_inches=0, orientation='landscape', pad_inches=0.5)
+        plt.show()
+
+def friends_followers_top5_reciprocals(api, ID):
+    followers =  make_twitter_request(api.followers.ids, user_id=ID,count=5000)
+    friends = make_twitter_request(api.friends.ids, user_id=ID,count=5000)
+    reciprocal_friends = set(followers["ids"]) & set(friends["ids"])
+    reciprocal_friends = [i for i in reciprocal_friends]
+    user_profiles_data = [ j for i,j in user_profiles.items()]
+    newlist = sorted(user_profiles_data, key=itemgetter('followers_count'), reverse=True)
+    return {key["id"]:value["id"] for key,value in newlist}
+
 
 if __name__ == '__main__':
     try:
@@ -295,10 +336,10 @@ if __name__ == '__main__':
         print("username ", USERNAME)
 
         print("Current User Description")
-        print(make_twitter_request(api.users.show,user_id=ID)["description"])
+        pretty_print(make_twitter_request(api.users.show,user_id=ID)["description"])
 
         print("\n\nTask-2: ")
-        followers =  make_twitter_request(api.friends.ids, user_id=ID,count=5000)
+        followers =  make_twitter_request(api.followers.ids, user_id=ID,count=5000)
         friends = make_twitter_request(api.friends.ids, user_id=ID,count=5000)
 
         print("Followers", followers["ids"])
@@ -320,31 +361,12 @@ if __name__ == '__main__':
 
         print("\n\nTask-5 and Task-6: Crawling Followers and create network for ", USERNAME)
         print("\nCreating a network for 'distance-1', 'distance-2' and so on ")
-        graph = networkx.Graph()
-
-        crawl_my_followers(api, graph, screen_name = USERNAME, minimum_limit=110)
+        graph = Graph()
+        crawl_followers(api, graph, screen_name = USERNAME, minimum_limit=100, depth = 10)
 
         print("\n\nTask-7: ")
         print("\nBuilding a network based on task-5")
-        file = open("OutputAssignment2.txt","w") 
-
-        file.write("\nNumber of Nodes : " + str(graph.number_of_nodes())) 
-        print("Number of nodes : ", graph.number_of_nodes())
-
-        file.write("\nNumber of of Edges : " + str(graph.number_of_edges()))
-        print("Number of edges : : ",graph.number_of_edges())
-
-        file.write("\n Diameter : " + str(networkx.diameter(graph, e=None, usebounds=False)))
-        print("Diameter : " , networkx.diameter(graph, e=None, usebounds=False))
-
-        file.write("\nAverage distance : " +  str(networkx.average_shortest_path_length(graph, weight=None)))
-        print("Average distance : " , networkx.average_shortest_path_length(graph, weight=None))
-
-        file.close() 
-        networkx.draw(graph, with_labels=True)
-        plt.savefig('image_output.png', bbox_inches=0, orientation='landscape', pad_inches=0.5)
-        plt.show()
+        graph.display_graph()
 
     except RuntimeError as e:
-        print(e)
-    
+        print("error", e)

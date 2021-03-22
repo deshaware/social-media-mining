@@ -1,0 +1,5 @@
+
+Number of nodes :  113
+Number of edges : :  113
+Diameter :  8
+Average distance :  5.140328697850822
