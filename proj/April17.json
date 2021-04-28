@@ -1,0 +1,1312 @@
+{
+    "statuses": [
+      {
+        "created_at": "Sat Apr 17 20:22:49 +0000 2021",
+        "id": 1383516316984696800,
+        "id_str": "1383516316984696835",
+        "text": "#PfizerVaccine https://t.co/vHfiBBBZR4",
+        "truncated": false,
+        "entities": {
+          "hashtags": [
+            {
+              "text": "PfizerVaccine",
+              "indices": [
+                0,
+                14
+              ]
+            }
+          ],
+          "symbols": [],
+          "user_mentions": [],
+          "urls": [],
+          "media": [
+            {
+              "id": 1383516307857940500,
+              "id_str": "1383516307857940488",
+              "indices": [
+                15,
+                38
+              ],
+              "media_url": "http://pbs.twimg.com/media/EzM8wHbVIAg9Oz8.jpg",
+              "media_url_https": "https://pbs.twimg.com/media/EzM8wHbVIAg9Oz8.jpg",
+              "url": "https://t.co/vHfiBBBZR4",
+              "display_url": "pic.twitter.com/vHfiBBBZR4",
+              "expanded_url": "https://twitter.com/DrewSineath/status/1383516316984696835/photo/1",
+              "type": "photo",
+              "sizes": {
+                "thumb": {
+                  "w": 150,
+                  "h": 150,
+                  "resize": "crop"
+                },
+                "medium": {
+                  "w": 899,
+                  "h": 1200,
+                  "resize": "fit"
+                },
+                "small": {
+                  "w": 509,
+                  "h": 680,
+                  "resize": "fit"
+                },
+                "large": {
+                  "w": 959,
+                  "h": 1280,
+                  "resize": "fit"
+                }
+              }
+            }
+          ]
+        },
+        "extended_entities": {
+          "media": [
+            {
+              "id": 1383516307857940500,
+              "id_str": "1383516307857940488",
+              "indices": [
+                15,
+                38
+              ],
+              "media_url": "http://pbs.twimg.com/media/EzM8wHbVIAg9Oz8.jpg",
+              "media_url_https": "https://pbs.twimg.com/media/EzM8wHbVIAg9Oz8.jpg",
+              "url": "https://t.co/vHfiBBBZR4",
+              "display_url": "pic.twitter.com/vHfiBBBZR4",
+              "expanded_url": "https://twitter.com/DrewSineath/status/1383516316984696835/photo/1",
+              "type": "photo",
+              "sizes": {
+                "thumb": {
+                  "w": 150,
+                  "h": 150,
+                  "resize": "crop"
+                },
+                "medium": {
+                  "w": 899,
+                  "h": 1200,
+                  "resize": "fit"
+                },
+                "small": {
+                  "w": 509,
+                  "h": 680,
+                  "resize": "fit"
+                },
+                "large": {
+                  "w": 959,
+                  "h": 1280,
+                  "resize": "fit"
+                }
+              }
+            }
+          ]
+        },
+        "metadata": {
+          "iso_language_code": "und",
+          "result_type": "recent"
+        },
+        "source": "<a href=\"http://twitter.com/download/android\" rel=\"nofollow\">Twitter for Android</a>",
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+          "id": 34354496,
+          "id_str": "34354496",
+          "name": "Drew Sineath",
+          "screen_name": "DrewSineath",
+          "location": "Goose Creek, SC, USA",
+          "description": "I am a real estate broker associate and team leader of the Drew Sineath & Associates team with Carolina One Real Estate in Goose Creek, SC!",
+          "url": "https://t.co/2krWb1TWxb",
+          "entities": {
+            "url": {
+              "urls": [
+                {
+                  "url": "https://t.co/2krWb1TWxb",
+                  "expanded_url": "http://www.DrewSineath.com",
+                  "display_url": "DrewSineath.com",
+                  "indices": [
+                    0,
+                    23
+                  ]
+                }
+              ]
+            },
+            "description": {
+              "urls": []
+            }
+          },
+          "protected": false,
+          "followers_count": 564,
+          "friends_count": 451,
+          "listed_count": 8,
+          "created_at": "Wed Apr 22 18:35:26 +0000 2009",
+          "favourites_count": 1126,
+          "utc_offset": null,
+          "time_zone": null,
+          "geo_enabled": true,
+          "verified": false,
+          "statuses_count": 5239,
+          "lang": null,
+          "contributors_enabled": false,
+          "is_translator": false,
+          "is_translation_enabled": false,
+          "profile_background_color": "EDECE9",
+          "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+          "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+          "profile_background_tile": false,
+          "profile_image_url": "http://pbs.twimg.com/profile_images/1349054403232362499/mNYh2UbE_normal.jpg",
+          "profile_image_url_https": "https://pbs.twimg.com/profile_images/1349054403232362499/mNYh2UbE_normal.jpg",
+          "profile_link_color": "088253",
+          "profile_sidebar_border_color": "D3D2CF",
+          "profile_sidebar_fill_color": "E3E2DE",
+          "profile_text_color": "634047",
+          "profile_use_background_image": true,
+          "has_extended_profile": true,
+          "default_profile": false,
+          "default_profile_image": false,
+          "following": null,
+          "follow_request_sent": null,
+          "notifications": null,
+          "translator_type": "none"
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "is_quote_status": false,
+        "retweet_count": 0,
+        "favorite_count": 0,
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "und"
+      },
+      {
+        "created_at": "Sat Apr 17 20:19:07 +0000 2021",
+        "id": 1383515389024297000,
+        "id_str": "1383515389024296962",
+        "text": "I got my 2nd microchip today! So far I'm not getting any signal! I'll let you know! 😁 #PfizerVaccine #FauciOuchie https://t.co/pW67LvZX2V",
+        "truncated": false,
+        "entities": {
+          "hashtags": [
+            {
+              "text": "PfizerVaccine",
+              "indices": [
+                86,
+                100
+              ]
+            },
+            {
+              "text": "FauciOuchie",
+              "indices": [
+                101,
+                113
+              ]
+            }
+          ],
+          "symbols": [],
+          "user_mentions": [],
+          "urls": [],
+          "media": [
+            {
+              "id": 1383515386306449400,
+              "id_str": "1383515386306449411",
+              "indices": [
+                114,
+                137
+              ],
+              "media_url": "http://pbs.twimg.com/media/EzM76eYVUAMqoPV.jpg",
+              "media_url_https": "https://pbs.twimg.com/media/EzM76eYVUAMqoPV.jpg",
+              "url": "https://t.co/pW67LvZX2V",
+              "display_url": "pic.twitter.com/pW67LvZX2V",
+              "expanded_url": "https://twitter.com/littlebit_mia/status/1383515389024296962/photo/1",
+              "type": "photo",
+              "sizes": {
+                "thumb": {
+                  "w": 150,
+                  "h": 150,
+                  "resize": "crop"
+                },
+                "large": {
+                  "w": 2048,
+                  "h": 1536,
+                  "resize": "fit"
+                },
+                "small": {
+                  "w": 680,
+                  "h": 510,
+                  "resize": "fit"
+                },
+                "medium": {
+                  "w": 1200,
+                  "h": 900,
+                  "resize": "fit"
+                }
+              }
+            }
+          ]
+        },
+        "extended_entities": {
+          "media": [
+            {
+              "id": 1383515386306449400,
+              "id_str": "1383515386306449411",
+              "indices": [
+                114,
+                137
+              ],
+              "media_url": "http://pbs.twimg.com/media/EzM76eYVUAMqoPV.jpg",
+              "media_url_https": "https://pbs.twimg.com/media/EzM76eYVUAMqoPV.jpg",
+              "url": "https://t.co/pW67LvZX2V",
+              "display_url": "pic.twitter.com/pW67LvZX2V",
+              "expanded_url": "https://twitter.com/littlebit_mia/status/1383515389024296962/photo/1",
+              "type": "photo",
+              "sizes": {
+                "thumb": {
+                  "w": 150,
+                  "h": 150,
+                  "resize": "crop"
+                },
+                "large": {
+                  "w": 2048,
+                  "h": 1536,
+                  "resize": "fit"
+                },
+                "small": {
+                  "w": 680,
+                  "h": 510,
+                  "resize": "fit"
+                },
+                "medium": {
+                  "w": 1200,
+                  "h": 900,
+                  "resize": "fit"
+                }
+              }
+            }
+          ]
+        },
+        "metadata": {
+          "iso_language_code": "en",
+          "result_type": "recent"
+        },
+        "source": "<a href=\"http://twitter.com/download/android\" rel=\"nofollow\">Twitter for Android</a>",
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+          "id": 803045912771723300,
+          "id_str": "803045912771723264",
+          "name": "littlebit",
+          "screen_name": "littlebit_mia",
+          "location": "",
+          "description": "Special needs Mom - Believer in science - Humanitarian - Black Lives Matter - \nFighter for democracy!! #defundthepolice\nMAGA trolls will be blocked!",
+          "url": null,
+          "entities": {
+            "description": {
+              "urls": []
+            }
+          },
+          "protected": false,
+          "followers_count": 1047,
+          "friends_count": 2443,
+          "listed_count": 2,
+          "created_at": "Mon Nov 28 01:20:40 +0000 2016",
+          "favourites_count": 78222,
+          "utc_offset": null,
+          "time_zone": null,
+          "geo_enabled": true,
+          "verified": false,
+          "statuses_count": 49562,
+          "lang": null,
+          "contributors_enabled": false,
+          "is_translator": false,
+          "is_translation_enabled": false,
+          "profile_background_color": "F5F8FA",
+          "profile_background_image_url": null,
+          "profile_background_image_url_https": null,
+          "profile_background_tile": false,
+          "profile_image_url": "http://pbs.twimg.com/profile_images/1324175127790182400/Jv5IPbQ4_normal.jpg",
+          "profile_image_url_https": "https://pbs.twimg.com/profile_images/1324175127790182400/Jv5IPbQ4_normal.jpg",
+          "profile_banner_url": "https://pbs.twimg.com/profile_banners/803045912771723264/1611590301",
+          "profile_link_color": "1DA1F2",
+          "profile_sidebar_border_color": "C0DEED",
+          "profile_sidebar_fill_color": "DDEEF6",
+          "profile_text_color": "333333",
+          "profile_use_background_image": true,
+          "has_extended_profile": false,
+          "default_profile": true,
+          "default_profile_image": false,
+          "following": null,
+          "follow_request_sent": null,
+          "notifications": null,
+          "translator_type": "none"
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "is_quote_status": false,
+        "retweet_count": 1,
+        "favorite_count": 6,
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+      },
+      {
+        "created_at": "Sat Apr 17 20:12:37 +0000 2021",
+        "id": 1383513750225842200,
+        "id_str": "1383513750225842192",
+        "text": "Has anyone else heard that you’ll have to get a 3rd dose of the #vaccine and then annually? #PfizerVaccine #CovidVaccine",
+        "truncated": false,
+        "entities": {
+          "hashtags": [
+            {
+              "text": "vaccine",
+              "indices": [
+                64,
+                72
+              ]
+            },
+            {
+              "text": "PfizerVaccine",
+              "indices": [
+                92,
+                106
+              ]
+            },
+            {
+              "text": "CovidVaccine",
+              "indices": [
+                107,
+                120
+              ]
+            }
+          ],
+          "symbols": [],
+          "user_mentions": [],
+          "urls": []
+        },
+        "metadata": {
+          "iso_language_code": "en",
+          "result_type": "recent"
+        },
+        "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+          "id": 750327464,
+          "id_str": "750327464",
+          "name": "Nari",
+          "screen_name": "_narsbar",
+          "location": "Washington, DC",
+          "description": "📍D.C 🇨🇦 🇸🇴 | Here for the comments. My opinion ain’t shit",
+          "url": null,
+          "entities": {
+            "description": {
+              "urls": []
+            }
+          },
+          "protected": false,
+          "followers_count": 70,
+          "friends_count": 430,
+          "listed_count": 0,
+          "created_at": "Sat Aug 11 00:30:48 +0000 2012",
+          "favourites_count": 2591,
+          "utc_offset": null,
+          "time_zone": null,
+          "geo_enabled": false,
+          "verified": false,
+          "statuses_count": 858,
+          "lang": null,
+          "contributors_enabled": false,
+          "is_translator": false,
+          "is_translation_enabled": false,
+          "profile_background_color": "C0DEED",
+          "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+          "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+          "profile_background_tile": false,
+          "profile_image_url": "http://pbs.twimg.com/profile_images/1382804548515987462/Vg8Z8IMk_normal.jpg",
+          "profile_image_url_https": "https://pbs.twimg.com/profile_images/1382804548515987462/Vg8Z8IMk_normal.jpg",
+          "profile_banner_url": "https://pbs.twimg.com/profile_banners/750327464/1605718449",
+          "profile_link_color": "1DA1F2",
+          "profile_sidebar_border_color": "C0DEED",
+          "profile_sidebar_fill_color": "DDEEF6",
+          "profile_text_color": "333333",
+          "profile_use_background_image": true,
+          "has_extended_profile": true,
+          "default_profile": true,
+          "default_profile_image": false,
+          "following": null,
+          "follow_request_sent": null,
+          "notifications": null,
+          "translator_type": "none"
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "is_quote_status": false,
+        "retweet_count": 0,
+        "favorite_count": 0,
+        "favorited": false,
+        "retweeted": false,
+        "lang": "en"
+      },
+      {
+        "created_at": "Sat Apr 17 20:11:52 +0000 2021",
+        "id": 1383513563705139200,
+        "id_str": "1383513563705139202",
+        "text": "Update after getting my #PfizerVaccine yesterday: arm is SORE, feeling a little tired, and more thirsty than normal… https://t.co/lPixtBvTHd",
+        "truncated": true,
+        "entities": {
+          "hashtags": [
+            {
+              "text": "PfizerVaccine",
+              "indices": [
+                24,
+                38
+              ]
+            }
+          ],
+          "symbols": [],
+          "user_mentions": [],
+          "urls": [
+            {
+              "url": "https://t.co/lPixtBvTHd",
+              "expanded_url": "https://twitter.com/i/web/status/1383513563705139202",
+              "display_url": "twitter.com/i/web/status/1…",
+              "indices": [
+                117,
+                140
+              ]
+            }
+          ]
+        },
+        "metadata": {
+          "iso_language_code": "en",
+          "result_type": "recent"
+        },
+        "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+          "id": 1217132050412523500,
+          "id_str": "1217132050412523525",
+          "name": "Elise Farand is staying home",
+          "screen_name": "EliseFarand",
+          "location": "Treaty 6 Territory - YEG",
+          "description": "(she/her) ✨ Got that 5G, baby! PTSD survivor. Screaming into the void. ANTIFA, SJW, whatever you want to call me. BA in Psychology. 🧠 My opinions are my own.",
+          "url": "https://t.co/QC4hAVQhD2",
+          "entities": {
+            "url": {
+              "urls": [
+                {
+                  "url": "https://t.co/QC4hAVQhD2",
+                  "expanded_url": "https://msha.ke/elisefarand/",
+                  "display_url": "msha.ke/elisefarand/",
+                  "indices": [
+                    0,
+                    23
+                  ]
+                }
+              ]
+            },
+            "description": {
+              "urls": []
+            }
+          },
+          "protected": false,
+          "followers_count": 798,
+          "friends_count": 1175,
+          "listed_count": 4,
+          "created_at": "Tue Jan 14 17:11:21 +0000 2020",
+          "favourites_count": 7004,
+          "utc_offset": null,
+          "time_zone": null,
+          "geo_enabled": true,
+          "verified": false,
+          "statuses_count": 2533,
+          "lang": null,
+          "contributors_enabled": false,
+          "is_translator": false,
+          "is_translation_enabled": false,
+          "profile_background_color": "F5F8FA",
+          "profile_background_image_url": null,
+          "profile_background_image_url_https": null,
+          "profile_background_tile": false,
+          "profile_image_url": "http://pbs.twimg.com/profile_images/1382743889958752260/39YTisBk_normal.jpg",
+          "profile_image_url_https": "https://pbs.twimg.com/profile_images/1382743889958752260/39YTisBk_normal.jpg",
+          "profile_banner_url": "https://pbs.twimg.com/profile_banners/1217132050412523525/1609531864",
+          "profile_link_color": "1DA1F2",
+          "profile_sidebar_border_color": "C0DEED",
+          "profile_sidebar_fill_color": "DDEEF6",
+          "profile_text_color": "333333",
+          "profile_use_background_image": true,
+          "has_extended_profile": true,
+          "default_profile": true,
+          "default_profile_image": false,
+          "following": null,
+          "follow_request_sent": null,
+          "notifications": null,
+          "translator_type": "none"
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "is_quote_status": false,
+        "retweet_count": 0,
+        "favorite_count": 6,
+        "favorited": false,
+        "retweeted": false,
+        "lang": "en"
+      },
+      {
+        "created_at": "Sat Apr 17 20:07:38 +0000 2021",
+        "id": 1383512495617306600,
+        "id_str": "1383512495617306624",
+        "text": "Fully vaccinated and 2 weeks since shot 2. That 2nd Pfizer dose knocked me out but I am so grateful for the vaccine… https://t.co/ZROEr3yJpI",
+        "truncated": true,
+        "entities": {
+          "hashtags": [],
+          "symbols": [],
+          "user_mentions": [],
+          "urls": [
+            {
+              "url": "https://t.co/ZROEr3yJpI",
+              "expanded_url": "https://twitter.com/i/web/status/1383512495617306624",
+              "display_url": "twitter.com/i/web/status/1…",
+              "indices": [
+                117,
+                140
+              ]
+            }
+          ]
+        },
+        "metadata": {
+          "iso_language_code": "en",
+          "result_type": "recent"
+        },
+        "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+          "id": 40228140,
+          "id_str": "40228140",
+          "name": "joe",
+          "screen_name": "josephedison",
+          "location": "305",
+          "description": "husband, father | polyglot | NPR, @wlrn addict | child/publicEd advocate | independent | @MDCPSTitleI Chair | ❤️🧘🏽‍♂️🚴🏽‍♂️🐾 | views my own/RT🚫endorsement",
+          "url": "https://t.co/2mLcEkCVNb",
+          "entities": {
+            "url": {
+              "urls": [
+                {
+                  "url": "https://t.co/2mLcEkCVNb",
+                  "expanded_url": "http://LifeByF.tumblr.com",
+                  "display_url": "LifeByF.tumblr.com",
+                  "indices": [
+                    0,
+                    23
+                  ]
+                }
+              ]
+            },
+            "description": {
+              "urls": []
+            }
+          },
+          "protected": false,
+          "followers_count": 3554,
+          "friends_count": 3302,
+          "listed_count": 65,
+          "created_at": "Fri May 15 12:20:41 +0000 2009",
+          "favourites_count": 13010,
+          "utc_offset": null,
+          "time_zone": null,
+          "geo_enabled": true,
+          "verified": false,
+          "statuses_count": 21265,
+          "lang": null,
+          "contributors_enabled": false,
+          "is_translator": false,
+          "is_translation_enabled": false,
+          "profile_background_color": "131516",
+          "profile_background_image_url": "http://abs.twimg.com/images/themes/theme14/bg.gif",
+          "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme14/bg.gif",
+          "profile_background_tile": true,
+          "profile_image_url": "http://pbs.twimg.com/profile_images/1315024701476032513/Wbhoceqr_normal.jpg",
+          "profile_image_url_https": "https://pbs.twimg.com/profile_images/1315024701476032513/Wbhoceqr_normal.jpg",
+          "profile_banner_url": "https://pbs.twimg.com/profile_banners/40228140/1439919231",
+          "profile_link_color": "1F9900",
+          "profile_sidebar_border_color": "EEEEEE",
+          "profile_sidebar_fill_color": "EFEFEF",
+          "profile_text_color": "333333",
+          "profile_use_background_image": true,
+          "has_extended_profile": true,
+          "default_profile": false,
+          "default_profile_image": false,
+          "following": null,
+          "follow_request_sent": null,
+          "notifications": null,
+          "translator_type": "none"
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "is_quote_status": false,
+        "retweet_count": 0,
+        "favorite_count": 6,
+        "favorited": false,
+        "retweeted": false,
+        "lang": "en"
+      },
+      {
+        "created_at": "Sat Apr 17 20:01:38 +0000 2021",
+        "id": 1383510989660778500,
+        "id_str": "1383510989660778496",
+        "text": "Anyone else get a #PfizerVaccine and feel terrible days later? 😥 #Phizer \nOr a #modernavaccine for that matter? #Moderna",
+        "truncated": false,
+        "entities": {
+          "hashtags": [
+            {
+              "text": "PfizerVaccine",
+              "indices": [
+                18,
+                32
+              ]
+            },
+            {
+              "text": "Phizer",
+              "indices": [
+                65,
+                72
+              ]
+            },
+            {
+              "text": "modernavaccine",
+              "indices": [
+                79,
+                94
+              ]
+            },
+            {
+              "text": "Moderna",
+              "indices": [
+                112,
+                120
+              ]
+            }
+          ],
+          "symbols": [],
+          "user_mentions": [],
+          "urls": []
+        },
+        "metadata": {
+          "iso_language_code": "en",
+          "result_type": "recent"
+        },
+        "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+          "id": 136839839,
+          "id_str": "136839839",
+          "name": "𝐴𝑔𝑒𝑛𝑡 ℳ",
+          "screen_name": "Meg4MJ",
+          "location": "Philadelphia",
+          "description": "We #DumpedTrump! 🚮\nWe embraced #BidenHarris2021! 💕 \n#MJFam ღ #RushFamily ღ #FreddieMercury ღ #FlyEaglesFly ღ #RingTheBell #NovaNation ღ #BigEast ღ",
+          "url": null,
+          "entities": {
+            "description": {
+              "urls": []
+            }
+          },
+          "protected": false,
+          "followers_count": 1638,
+          "friends_count": 871,
+          "listed_count": 23,
+          "created_at": "Sun Apr 25 02:43:00 +0000 2010",
+          "favourites_count": 19178,
+          "utc_offset": null,
+          "time_zone": null,
+          "geo_enabled": false,
+          "verified": false,
+          "statuses_count": 31200,
+          "lang": null,
+          "contributors_enabled": false,
+          "is_translator": false,
+          "is_translation_enabled": false,
+          "profile_background_color": "ABB8C2",
+          "profile_background_image_url": "http://abs.twimg.com/images/themes/theme18/bg.gif",
+          "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme18/bg.gif",
+          "profile_background_tile": false,
+          "profile_image_url": "http://pbs.twimg.com/profile_images/503861764346228736/arcM0zVx_normal.jpeg",
+          "profile_image_url_https": "https://pbs.twimg.com/profile_images/503861764346228736/arcM0zVx_normal.jpeg",
+          "profile_banner_url": "https://pbs.twimg.com/profile_banners/136839839/1390356703",
+          "profile_link_color": "F20317",
+          "profile_sidebar_border_color": "FFFFFF",
+          "profile_sidebar_fill_color": "78C0A8",
+          "profile_text_color": "5E412F",
+          "profile_use_background_image": false,
+          "has_extended_profile": false,
+          "default_profile": false,
+          "default_profile_image": false,
+          "following": null,
+          "follow_request_sent": null,
+          "notifications": null,
+          "translator_type": "none"
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "is_quote_status": false,
+        "retweet_count": 0,
+        "favorite_count": 0,
+        "favorited": false,
+        "retweeted": false,
+        "lang": "en"
+      },
+      {
+        "created_at": "Sat Apr 17 19:26:34 +0000 2021",
+        "id": 1383502160919335000,
+        "id_str": "1383502160919334919",
+        "text": "Extra #PfizerVaccine available in #Chicago ... pass it along! https://t.co/ilKbxnW3Ga",
+        "truncated": false,
+        "entities": {
+          "hashtags": [
+            {
+              "text": "PfizerVaccine",
+              "indices": [
+                6,
+                20
+              ]
+            },
+            {
+              "text": "Chicago",
+              "indices": [
+                34,
+                42
+              ]
+            }
+          ],
+          "symbols": [],
+          "user_mentions": [],
+          "urls": [
+            {
+              "url": "https://t.co/ilKbxnW3Ga",
+              "expanded_url": "https://twitter.com/senvillivalam/status/1383471330117382148",
+              "display_url": "twitter.com/senvillivalam/…",
+              "indices": [
+                62,
+                85
+              ]
+            }
+          ]
+        },
+        "metadata": {
+          "iso_language_code": "en",
+          "result_type": "recent"
+        },
+        "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+          "id": 48550804,
+          "id_str": "48550804",
+          "name": "Katie Clark",
+          "screen_name": "mkmclark",
+          "location": "Chicago, IL",
+          "description": "East Coast gal living in the Windy City. I love travel, adventure, cats and AP Style. @MattressFirm Communications. All opinions are my own!",
+          "url": null,
+          "entities": {
+            "description": {
+              "urls": []
+            }
+          },
+          "protected": false,
+          "followers_count": 131,
+          "friends_count": 309,
+          "listed_count": 4,
+          "created_at": "Fri Jun 19 00:34:52 +0000 2009",
+          "favourites_count": 4300,
+          "utc_offset": null,
+          "time_zone": null,
+          "geo_enabled": true,
+          "verified": false,
+          "statuses_count": 375,
+          "lang": null,
+          "contributors_enabled": false,
+          "is_translator": false,
+          "is_translation_enabled": false,
+          "profile_background_color": "C0DEED",
+          "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+          "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+          "profile_background_tile": false,
+          "profile_image_url": "http://pbs.twimg.com/profile_images/1160291683218710534/Is_xrr79_normal.jpg",
+          "profile_image_url_https": "https://pbs.twimg.com/profile_images/1160291683218710534/Is_xrr79_normal.jpg",
+          "profile_banner_url": "https://pbs.twimg.com/profile_banners/48550804/1377036764",
+          "profile_link_color": "1DA1F2",
+          "profile_sidebar_border_color": "C0DEED",
+          "profile_sidebar_fill_color": "DDEEF6",
+          "profile_text_color": "333333",
+          "profile_use_background_image": true,
+          "has_extended_profile": false,
+          "default_profile": true,
+          "default_profile_image": false,
+          "following": null,
+          "follow_request_sent": null,
+          "notifications": null,
+          "translator_type": "none"
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "is_quote_status": true,
+        "quoted_status_id": 1383471330117382100,
+        "quoted_status_id_str": "1383471330117382148",
+        "quoted_status": {
+          "created_at": "Sat Apr 17 17:24:03 +0000 2021",
+          "id": 1383471330117382100,
+          "id_str": "1383471330117382148",
+          "text": "📣Vaccine availability TODAY!\n\nThere are 400 extra Pfizer vaccine doses available at the Muslim Community Center in… https://t.co/aAyTt2I2VE",
+          "truncated": true,
+          "entities": {
+            "hashtags": [],
+            "symbols": [],
+            "user_mentions": [],
+            "urls": [
+              {
+                "url": "https://t.co/aAyTt2I2VE",
+                "expanded_url": "https://twitter.com/i/web/status/1383471330117382148",
+                "display_url": "twitter.com/i/web/status/1…",
+                "indices": [
+                  116,
+                  139
+                ]
+              }
+            ]
+          },
+          "metadata": {
+            "iso_language_code": "en",
+            "result_type": "recent"
+          },
+          "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+          "in_reply_to_status_id": null,
+          "in_reply_to_status_id_str": null,
+          "in_reply_to_user_id": null,
+          "in_reply_to_user_id_str": null,
+          "in_reply_to_screen_name": null,
+          "user": {
+            "id": 1082349722621411300,
+            "id_str": "1082349722621411328",
+            "name": "Ram Villivalam",
+            "screen_name": "senvillivalam",
+            "location": "Chicago, IL",
+            "description": "Illinois State Senator Representing the 8th District. Proud Asian American, Advocate for Working Families, Husband & Dad. He/Him/His",
+            "url": "https://t.co/rkRG1gj9U0",
+            "entities": {
+              "url": {
+                "urls": [
+                  {
+                    "url": "https://t.co/rkRG1gj9U0",
+                    "expanded_url": "http://senatorram.com",
+                    "display_url": "senatorram.com",
+                    "indices": [
+                      0,
+                      23
+                    ]
+                  }
+                ]
+              },
+              "description": {
+                "urls": []
+              }
+            },
+            "protected": false,
+            "followers_count": 1356,
+            "friends_count": 191,
+            "listed_count": 37,
+            "created_at": "Mon Jan 07 18:54:17 +0000 2019",
+            "favourites_count": 258,
+            "utc_offset": null,
+            "time_zone": null,
+            "geo_enabled": false,
+            "verified": false,
+            "statuses_count": 707,
+            "lang": null,
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "000000",
+            "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+            "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+            "profile_background_tile": false,
+            "profile_image_url": "http://pbs.twimg.com/profile_images/1082353850202365953/rgatf-GN_normal.jpg",
+            "profile_image_url_https": "https://pbs.twimg.com/profile_images/1082353850202365953/rgatf-GN_normal.jpg",
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/1082349722621411328/1548280871",
+            "profile_link_color": "1B95E0",
+            "profile_sidebar_border_color": "000000",
+            "profile_sidebar_fill_color": "000000",
+            "profile_text_color": "000000",
+            "profile_use_background_image": false,
+            "has_extended_profile": false,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": null,
+            "follow_request_sent": null,
+            "notifications": null,
+            "translator_type": "none"
+          },
+          "geo": null,
+          "coordinates": null,
+          "place": null,
+          "contributors": null,
+          "is_quote_status": false,
+          "retweet_count": 36,
+          "favorite_count": 22,
+          "favorited": false,
+          "retweeted": false,
+          "possibly_sensitive": false,
+          "lang": "en"
+        },
+        "retweet_count": 0,
+        "favorite_count": 0,
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+      },
+      {
+        "created_at": "Sat Apr 17 19:17:46 +0000 2021",
+        "id": 1383499948725923800,
+        "id_str": "1383499948725923847",
+        "text": "So it's been a few days since my first dose of the #PfizerVaccine. I didn't really experience much in the way of si… https://t.co/NO2pqbXGEZ",
+        "truncated": true,
+        "entities": {
+          "hashtags": [
+            {
+              "text": "PfizerVaccine",
+              "indices": [
+                51,
+                65
+              ]
+            }
+          ],
+          "symbols": [],
+          "user_mentions": [],
+          "urls": [
+            {
+              "url": "https://t.co/NO2pqbXGEZ",
+              "expanded_url": "https://twitter.com/i/web/status/1383499948725923847",
+              "display_url": "twitter.com/i/web/status/1…",
+              "indices": [
+                117,
+                140
+              ]
+            }
+          ]
+        },
+        "metadata": {
+          "iso_language_code": "en",
+          "result_type": "recent"
+        },
+        "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+          "id": 95556963,
+          "id_str": "95556963",
+          "name": "🎢 Billy DAnjou 🪀",
+          "screen_name": "Angry_Gumball",
+          "location": "",
+          "description": "Owner and Creator of Thrills by the Bay, Yoyo enthusiast, Entertainment Graphic Artist at @CAGreatAmerica - Thoughts & tweets are my own",
+          "url": "https://t.co/yLdGQhfwJx",
+          "entities": {
+            "url": {
+              "urls": [
+                {
+                  "url": "https://t.co/yLdGQhfwJx",
+                  "expanded_url": "http://www.thrillsbythebay.com",
+                  "display_url": "thrillsbythebay.com",
+                  "indices": [
+                    0,
+                    23
+                  ]
+                }
+              ]
+            },
+            "description": {
+              "urls": []
+            }
+          },
+          "protected": false,
+          "followers_count": 50,
+          "friends_count": 61,
+          "listed_count": 0,
+          "created_at": "Wed Dec 09 02:31:45 +0000 2009",
+          "favourites_count": 215,
+          "utc_offset": null,
+          "time_zone": null,
+          "geo_enabled": true,
+          "verified": false,
+          "statuses_count": 796,
+          "lang": null,
+          "contributors_enabled": false,
+          "is_translator": false,
+          "is_translation_enabled": false,
+          "profile_background_color": "131516",
+          "profile_background_image_url": "http://abs.twimg.com/images/themes/theme14/bg.gif",
+          "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme14/bg.gif",
+          "profile_background_tile": false,
+          "profile_image_url": "http://pbs.twimg.com/profile_images/1304858394566651905/_r-r3EK8_normal.jpg",
+          "profile_image_url_https": "https://pbs.twimg.com/profile_images/1304858394566651905/_r-r3EK8_normal.jpg",
+          "profile_banner_url": "https://pbs.twimg.com/profile_banners/95556963/1599937520",
+          "profile_link_color": "009999",
+          "profile_sidebar_border_color": "EEEEEE",
+          "profile_sidebar_fill_color": "EFEFEF",
+          "profile_text_color": "333333",
+          "profile_use_background_image": false,
+          "has_extended_profile": true,
+          "default_profile": false,
+          "default_profile_image": false,
+          "following": null,
+          "follow_request_sent": null,
+          "notifications": null,
+          "translator_type": "none"
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "is_quote_status": false,
+        "retweet_count": 0,
+        "favorite_count": 0,
+        "favorited": false,
+        "retweeted": false,
+        "lang": "en"
+      },
+      {
+        "created_at": "Sat Apr 17 19:17:23 +0000 2021",
+        "id": 1383499850839314400,
+        "id_str": "1383499850839314438",
+        "text": "Starting to get a pain going down my arm. Imagine a growing pain or leg cramp. Dull but with moments of throbbing.… https://t.co/vYTyvR7DRx",
+        "truncated": true,
+        "entities": {
+          "hashtags": [],
+          "symbols": [],
+          "user_mentions": [],
+          "urls": [
+            {
+              "url": "https://t.co/vYTyvR7DRx",
+              "expanded_url": "https://twitter.com/i/web/status/1383499850839314438",
+              "display_url": "twitter.com/i/web/status/1…",
+              "indices": [
+                116,
+                139
+              ]
+            }
+          ]
+        },
+        "metadata": {
+          "iso_language_code": "en",
+          "result_type": "recent"
+        },
+        "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+        "in_reply_to_status_id": 1383469482396459000,
+        "in_reply_to_status_id_str": "1383469482396459011",
+        "in_reply_to_user_id": 16920079,
+        "in_reply_to_user_id_str": "16920079",
+        "in_reply_to_screen_name": "sacrilegiousqvn",
+        "user": {
+          "id": 16920079,
+          "id_str": "16920079",
+          "name": "hallowed be my name 🗡",
+          "screen_name": "sacrilegiousqvn",
+          "location": "minnesota nice",
+          "description": "•|::i do not look up anymore and i don't know why::|• |-/",
+          "url": null,
+          "entities": {
+            "description": {
+              "urls": []
+            }
+          },
+          "protected": false,
+          "followers_count": 173,
+          "friends_count": 212,
+          "listed_count": 3,
+          "created_at": "Thu Oct 23 04:44:34 +0000 2008",
+          "favourites_count": 4810,
+          "utc_offset": null,
+          "time_zone": null,
+          "geo_enabled": false,
+          "verified": false,
+          "statuses_count": 6882,
+          "lang": null,
+          "contributors_enabled": false,
+          "is_translator": false,
+          "is_translation_enabled": false,
+          "profile_background_color": "030303",
+          "profile_background_image_url": "http://abs.twimg.com/images/themes/theme5/bg.gif",
+          "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme5/bg.gif",
+          "profile_background_tile": true,
+          "profile_image_url": "http://pbs.twimg.com/profile_images/1305228464790872064/s3wOkuBm_normal.jpg",
+          "profile_image_url_https": "https://pbs.twimg.com/profile_images/1305228464790872064/s3wOkuBm_normal.jpg",
+          "profile_banner_url": "https://pbs.twimg.com/profile_banners/16920079/1598760891",
+          "profile_link_color": "ED15A9",
+          "profile_sidebar_border_color": "12FC1A",
+          "profile_sidebar_fill_color": "1FE4F2",
+          "profile_text_color": "F022E9",
+          "profile_use_background_image": true,
+          "has_extended_profile": true,
+          "default_profile": false,
+          "default_profile_image": false,
+          "following": null,
+          "follow_request_sent": null,
+          "notifications": null,
+          "translator_type": "none"
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "is_quote_status": false,
+        "retweet_count": 0,
+        "favorite_count": 0,
+        "favorited": false,
+        "retweeted": false,
+        "lang": "en"
+      },
+      {
+        "created_at": "Sat Apr 17 19:15:07 +0000 2021",
+        "id": 1383499281840050200,
+        "id_str": "1383499281840050186",
+        "text": "more in detail for that one since the second is always the worst from what I’ve seen. #COVID19Vaccine #PfizerVaccine",
+        "truncated": false,
+        "entities": {
+          "hashtags": [
+            {
+              "text": "COVID19Vaccine",
+              "indices": [
+                86,
+                101
+              ]
+            },
+            {
+              "text": "PfizerVaccine",
+              "indices": [
+                102,
+                116
+              ]
+            }
+          ],
+          "symbols": [],
+          "user_mentions": [],
+          "urls": []
+        },
+        "metadata": {
+          "iso_language_code": "en",
+          "result_type": "recent"
+        },
+        "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+        "in_reply_to_status_id": 1383499103473074200,
+        "in_reply_to_status_id_str": "1383499103473074178",
+        "in_reply_to_user_id": 1336558924498137000,
+        "in_reply_to_user_id_str": "1336558924498137089",
+        "in_reply_to_screen_name": "vanhalengroupee",
+        "user": {
+          "id": 1336558924498137000,
+          "id_str": "1336558924498137089",
+          "name": "Lee",
+          "screen_name": "vanhalengroupee",
+          "location": "",
+          "description": "Here for a good time not a long time 👍🏻",
+          "url": null,
+          "entities": {
+            "description": {
+              "urls": []
+            }
+          },
+          "protected": false,
+          "followers_count": 5,
+          "friends_count": 21,
+          "listed_count": 0,
+          "created_at": "Wed Dec 09 06:31:07 +0000 2020",
+          "favourites_count": 10,
+          "utc_offset": null,
+          "time_zone": null,
+          "geo_enabled": false,
+          "verified": false,
+          "statuses_count": 56,
+          "lang": null,
+          "contributors_enabled": false,
+          "is_translator": false,
+          "is_translation_enabled": false,
+          "profile_background_color": "F5F8FA",
+          "profile_background_image_url": null,
+          "profile_background_image_url_https": null,
+          "profile_background_tile": false,
+          "profile_image_url": "http://pbs.twimg.com/profile_images/1364148451274072068/zO5SEnIO_normal.jpg",
+          "profile_image_url_https": "https://pbs.twimg.com/profile_images/1364148451274072068/zO5SEnIO_normal.jpg",
+          "profile_banner_url": "https://pbs.twimg.com/profile_banners/1336558924498137089/1614073692",
+          "profile_link_color": "1DA1F2",
+          "profile_sidebar_border_color": "C0DEED",
+          "profile_sidebar_fill_color": "DDEEF6",
+          "profile_text_color": "333333",
+          "profile_use_background_image": true,
+          "has_extended_profile": true,
+          "default_profile": true,
+          "default_profile_image": false,
+          "following": null,
+          "follow_request_sent": null,
+          "notifications": null,
+          "translator_type": "none"
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "is_quote_status": false,
+        "retweet_count": 0,
+        "favorite_count": 0,
+        "favorited": false,
+        "retweeted": false,
+        "lang": "en"
+      }
+    ],
+    "search_metadata": {
+      "completed_in": 0.055,
+      "max_id": 1383516316984696800,
+      "max_id_str": "1383516316984696835",
+      "next_results": "?max_id=1383499281840050185&q=%23PfizerVaccine%20-RT&count=10&include_entities=1",
+      "query": "%23PfizerVaccine+-RT",
+      "refresh_url": "?since_id=1383516316984696835&q=%23PfizerVaccine%20-RT&include_entities=1",
+      "count": 10,
+      "since_id": 0,
+      "since_id_str": "0"
+    }
+  }
