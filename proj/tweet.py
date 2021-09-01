@@ -139,6 +139,7 @@ def clean_results(result, topic):
         obj["name"] = arr["user"]["name"]
         obj["location"] = arr["user"]["location"]
         obj["topic"] = topic
+        obj["created_at"] = arr["created_at"]
         obj["processed_on"] = datetime.datetime.now().isoformat(' ', 'seconds')
         final.append(obj)
     return final
@@ -155,30 +156,42 @@ def save_tweets(tweets):
     except Exception as e:
         print(e)
 
-def query_tweet(query, count, topic):
+def query_tweet(query, count, topic, dates):
     api = oauth_login()
-    result = api.search.tweets(q=query, count=100)
-    print(result["search_metadata"])
-    save_tweets(clean_results(result, topic))
-    result_count = result["search_metadata"]["count"]
-    next_max_id = result["search_metadata"]["next_results"].split('max_id=')[1].split('&')[0]
-    while result_count < count:
-        result = api.search.tweets(q=query, include_entities='true',max_id=next_max_id, count=100)
-        print(result["search_metadata"])
-        print(result_count)
+    for i in range(0,len(dates) - 2):
+        # fromDate = (datetime.date.strptime(toDate, '%Y-%m-%d') - datetime..timedelta(days=1)).strftime("%Y-%m-%d") # Create 1-day windows for extraction
+        fromDate = dates[i] 
+        toDate = dates[i+1]
+        result = api.search.tweets(q=query + f" AND since:{fromDate} until:{toDate}", count=100 )
+        print(json.dumps(result, indent=1))
         save_tweets(clean_results(result, topic))
-        result_count += result["search_metadata"]["count"]
-        if "next_results" in result["search_metadata"]:
-            next_max_id = result["search_metadata"]["next_results"].split('max_id=')[1].split('&')[0]
-        else:
-            break
+        result_count = result["search_metadata"]["count"]
+        next_max_id = result["search_metadata"]["next_results"].split('max_id=')[1].split('&')[0]
+        while result_count < count:
+            result = api.search.tweets(q=query, include_entities='true',max_id=next_max_id, count=100,  fromDate=fromDate, toDate=toDate)
+            print(result["search_metadata"])
+            print(result_count)
+            save_tweets(clean_results(result, topic))
+            result_count += result["search_metadata"]["count"]
+            if "next_results" in result["search_metadata"]:
+                next_max_id = result["search_metadata"]["next_results"].split('max_id=')[1].split('&')[0]
+            else:
+                break
         
 def main():
     try:
         
-        topics = ["ModernaVaccine","JohnsonAndJohnsonVaccine", "PfizerVaccine"]
+        # topics = ["ModernaVaccine","JohnsonAndJohnsonVaccine", "PfizerVaccine"]
+        topics = ["Vaccine"]
+        list_of_dates = []
+        today = datetime.date.today()
+        for i in range(-7,1):
+            target_date = (today + datetime.timedelta(days=i)).isoformat()
+            list_of_dates.append(target_date)
+        print(list_of_dates)
+
         for topic in topics:
-            query_tweet("#"+ topic+" -RT AND lang:en", 2000, topic)
+            query_tweet("#"+ topic+" -RT AND lang:en", 2000, topic, list_of_dates)
             # print(json.dumps(result, indent=1))
             print("Done writing"+topic)            
     except Exception as e:
